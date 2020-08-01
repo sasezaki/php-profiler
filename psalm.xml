@@ -8,7 +8,7 @@
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
-        <directory name="src" />
+        <directory name="src"/>
     </projectFiles>
     <stubs>
         <file name="vendor/jetbrains/phpstorm-stubs/FFI/FFI.php"/>
@@ -16,4 +16,4 @@
         <file name="tools/stubs/ffi/scalar.php"/>
         <file name="tools/stubs/ffi/php.php"/>
     </stubs>
-</psalm>
+<plugins><pluginClass class="Sfp\Psalm\TypedLocalVariablePlugin\Plugin"/></plugins></psalm>
