@@ -57,13 +57,13 @@
   ],
   "scripts": {
     "test": [
-      "docker-compose run reli-test"
+      "docker compose run reli-test"
     ],
     "test-with-coverage": [
-      "docker-compose run reli-test-with-coverage"
+      "docker compose run reli-test-with-coverage"
     ],
     "test-for-ci": [
-      "docker-compose run reli-test-for-ci"
+      "docker compose run reli-test-for-ci"
     ],
     "psalm": [
       "psalm.phar"
