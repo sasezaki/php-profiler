@@ -862,7 +862,7 @@ struct _zend_class_entry {
 	int default_static_members_count;
 	zval *default_properties_table;
 	zval *default_static_members_table;
-	zval *static_members_table__ptr;
+	zval **static_members_table__ptr;
 	HashTable function_table;
 	HashTable properties_info;
 	HashTable constants_table;
