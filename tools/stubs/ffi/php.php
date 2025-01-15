@@ -258,6 +258,7 @@ class zend_class_entry extends CData
     public int $ce_flags;
     public CPointer $name;
     public zend_class_entry_info $info;
+    public ?CPointer $doc_comment;
 }
 
 class zend_class_entry_info extends CData

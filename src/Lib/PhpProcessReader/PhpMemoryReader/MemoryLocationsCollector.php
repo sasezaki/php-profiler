@@ -185,7 +185,8 @@ final class MemoryLocationsCollector
                             default => $type_name,
                         },
                         ZendTypeReader::V82,
-                        ZendTypeReader::V83 => $type_name,
+                        ZendTypeReader::V83,
+                        ZendTypeReader::V84 => $type_name,
                     };
                 }
             }
@@ -1569,9 +1570,9 @@ final class MemoryLocationsCollector
                 $class_definition_context->add('filename', $file_name_context);
             }
 
-            if (!is_null($class_entry->info->user->doc_comment)) {
+            if (!is_null($doc_comment = $class_entry->getDocCommentPointer($zend_type_reader))) {
                 $doc_comment_context = $this->collectZendStringPointer(
-                    $class_entry->info->user->doc_comment,
+                    $doc_comment,
                     $memory_locations,
                     $dereferencer,
                     $context_pools,

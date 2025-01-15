@@ -36,6 +36,7 @@ final class ZendTypeReader
     public const V81 = 'v81';
     public const V82 = 'v82';
     public const V83 = 'v83';
+    public const V84 = 'v84';
 
     public const ALL_SUPPORTED_VERSIONS = [
         self::V70,
@@ -47,6 +48,7 @@ final class ZendTypeReader
         self::V81,
         self::V82,
         self::V83,
+        self::V84,
     ];
 
     public VersionAwareConstants $constants;

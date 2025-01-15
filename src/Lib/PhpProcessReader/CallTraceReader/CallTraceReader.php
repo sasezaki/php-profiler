@@ -100,7 +100,8 @@ final class CallTraceReader
                             default => $type_name,
                         },
                         ZendTypeReader::V82,
-                        ZendTypeReader::V83 => $type_name,
+                        ZendTypeReader::V83,
+                        ZendTypeReader::V84 => $type_name,
                     };
                 }
             }
