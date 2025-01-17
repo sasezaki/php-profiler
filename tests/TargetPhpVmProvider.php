@@ -29,6 +29,7 @@ class TargetPhpVmProvider
             ZendTypeReader::V81,
             ZendTypeReader::V82,
             ZendTypeReader::V83,
+            ZendTypeReader::V84,
         ];
         foreach ($versions as $v) {
             if ($php_version <= $v) {
@@ -49,6 +50,7 @@ class TargetPhpVmProvider
             ZendTypeReader::V81,
             ZendTypeReader::V82,
             ZendTypeReader::V83,
+            ZendTypeReader::V84,
         ];
         foreach ($versions as $version) {
             yield $version => [$version, self::dockerImageNameFromPhpVersion($version)];
@@ -67,6 +69,7 @@ class TargetPhpVmProvider
             ZendTypeReader::V81 => 'php:8.1-cli',
             ZendTypeReader::V82 => 'php:8.2-cli',
             ZendTypeReader::V83 => 'php:8.3-cli',
+            ZendTypeReader::V84 => 'php:8.4-cli',
             default => throw new \InvalidArgumentException("unsupported php version: $php_version"),
         };
     }

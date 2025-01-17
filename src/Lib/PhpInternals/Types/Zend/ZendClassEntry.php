@@ -76,6 +76,12 @@ final class ZendClassEntry implements Dereferencable
 
     public ZendClassEntryInfo $info;
 
+    /**
+     * @psalm-suppress PropertyNotSetInConstructor
+     * @var Pointer<ZendString>|null
+     */
+    public ?Pointer $doc_comment;
+
     private ?ZvalArray $static_properties_table_cache = null;
 
     /**
@@ -100,6 +106,7 @@ final class ZendClassEntry implements Dereferencable
         unset($this->default_static_members_table);
         unset($this->num_interfaces);
         unset($this->num_traits);
+        unset($this->doc_comment);
         $this->info = new ZendClassEntryInfo($this->casted_cdata->casted->info);
     }
 
@@ -190,7 +197,22 @@ final class ZendClassEntry implements Dereferencable
             ,
             'num_interfaces' => $this->num_interfaces = $this->casted_cdata->casted->num_interfaces,
             'num_traits' => $this->num_traits = $this->casted_cdata->casted->num_traits,
+            'doc_comment' => $this->doc_comment = $this->casted_cdata->casted->doc_comment !== null
+                ? Pointer::fromCData(
+                    ZendString::class,
+                    $this->casted_cdata->casted->doc_comment
+                )
+                : null
         };
+    }
+
+    /** @return null|Pointer<ZendString> */
+    public function getDocCommentPointer(ZendTypeReader $zend_type_reader): ?Pointer
+    {
+        if ($zend_type_reader->isPhpVersionLowerThan(ZendTypeReader::V84)) {
+            return $this->info->user->doc_comment;
+        }
+        return $this->doc_comment;
     }
 
     /** @return iterable<string, ZendPropertyInfo> */
